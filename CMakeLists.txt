@@ -40,7 +40,7 @@ set(CMAKE_ASM_FLAGS   "${CFLAGS}")
 
 set(FUSES "-U lfuse:w:0x62:m -U hfuse:w:0xdf:m -U efuse:w:0xff:m -U hfuse:w:0x9A:m")
 
-add_executable(${PROJECT_NAME} main.c)
+add_executable(${PROJECT_NAME} src/main.c lib/blink.c)
 set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME "${PROJECT_NAME}.elf")
 
 add_custom_target(hex   ALL     ${OBJCOPY} -R .eeprom -O ihex "${PROJECT_NAME}.elf" "${PROJECT_NAME}.hex" DEPENDS ${PROJECT_NAME})
